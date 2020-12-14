@@ -36,12 +36,16 @@ connect_future.result()
 print("Connected!")
 # Publish message to server desired number of times.
 print('Begin Publish')
-for i in range (RANGE):
-    data = "{} [{}]".format(MESSAGE, i+1)
-    message = {"message" : data}
-    mqtt_connection.publish(topic=TOPIC, payload=json.dumps(message), qos=mqtt.QoS.AT_LEAST_ONCE)
-    print("Published: '" + json.dumps(message) + "' to the topic: " + "'test/testing'")
-    t.sleep(0.1)
+# for i in range (RANGE):
+#     data = "{} [{}]".format(MESSAGE, i+1)
+#     message = {"message" : data}
+#     mqtt_connection.publish(topic=TOPIC, payload=json.dumps(message), qos=mqtt.QoS.AT_LEAST_ONCE)
+#     print("Published: '" + json.dumps(message) + "' to the topic: " + "'test/testing'")
+#     t.sleep(0.1)
+data = "1"
+message = {"message": data}
+mqtt_connection.publish(topic=TOPIC, payload=json.dumps(message), qos=mqtt.QoS.AT_LEAST_ONCE)
+
 print('Publish End')
 disconnect_future = mqtt_connection.disconnect()
 disconnect_future.result()
